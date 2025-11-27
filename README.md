@@ -2,24 +2,35 @@
 
 [![Streamlit App](https://img.shields.io/badge/🔭_Live_App-Streamlit-green?style=for-the-badge)](https://exoplanet-detection-using-deep-learning-hedt5bhak5gus223xxrcat.streamlit.app/)
 [![GitHub Repo](https://img.shields.io/badge/📂_Source_Code-GitHub-blue?style=for-the-badge)](https://github.com/ayushmandas29/Exoplanet-Detection-using-Deep-Learning)
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange)
+![Streamlit](https://img.shields.io/badge/Web_App-Streamlit-red)
+![NASA](https://img.shields.io/badge/Data-NASA_Kepler-black)
+![Deep Learning](https://img.shields.io/badge/Model-1D_CNN-green)
+
+---
+
+## 🌌 Background — What is an Exoplanet?
+An **exoplanet** is a planet located **outside our solar system**.  
+We cannot directly photograph most of them — they are too far and too dim compared to their host stars.
+
+Astronomers use the **Transit Method**:
+> When a planet passes in front of its star, the star’s brightness dips slightly.  
+> This repeating dip pattern (light curve) indicates the presence of an exoplanet.
+
+This project automates the detection of these light-curve patterns using **Deep Learning**.
 
 ---
 
 ## 🚀 Project Overview
-This project uses **Deep Learning** to predict whether a star has an **orbiting exoplanet** by analysing its **light-curve signal captured by NASA's Kepler Space Telescope**.
+This system analyzes **NASA Kepler light-curve time-series data** and predicts whether a star has an orbiting exoplanet.
 
-When a planet passes in front of a star, the star’s brightness dips — this is known as a **transit**.  
-Using this flux data, the trained 1D-CNN model classifies:
+| Output | Meaning |
+|--------|---------|
+| 🌍 **1** | Exoplanet candidate detected |
+| ✖️ **0** | No exoplanet detected |
 
-| Class | Meaning |
-|-------|---------|
-| 🌍 1 | **Exoplanet candidate detected** |
-| ✖️ 0 | **No exoplanet detected** |
-
----
-
-## 🌐 Live Interactive Web App
-Upload a CSV file containing one row of flux values (light curve), and the model predicts instantly.
+A **1D Convolutional Neural Network (CNN)** is trained and deployed as an interactive **Streamlit web application**.
 
 🔗 **Live Demo:**  
 https://exoplanet-detection-using-deep-learning-hedt5bhak5gus223xxrcat.streamlit.app/
@@ -27,64 +38,85 @@ https://exoplanet-detection-using-deep-learning-hedt5bhak5gus223xxrcat.streamlit
 ---
 
 ## 📂 Dataset
-The model is trained using **NASA Kepler public light-curve dataset**, consisting of:
-- **Exoplanet transit samples**
-- **Non-transit samples**
+NASA Kepler dataset: **Exoplanet Hunting in Deep Space**  
+Contains:
+- Confirmed or likely exoplanet transit samples
+- Non-transit light curves
+- ~3198 flux values per sample
 
-Each sample contains ~3198 brightness readings over time.
+Kaggle Source:  
+https://www.kaggle.com/datasets/keplersmachines/exoplanet-hunting-in-deep-space
 
 ---
 
 ## 🧠 Model Architecture
-A custom **1D Convolutional Neural Network (CNN)**:
-Input → Conv1D → MaxPool → Conv1D → MaxPool → Flatten → Dense → Dense (Sigmoid)
+Input (3198 flux values)
+→ Conv1D → MaxPool
+→ Conv1D → MaxPool
+→ Conv1D → MaxPool
+→ Flatten
+→ Dense(128) + Dropout(0.5)
+→ Dense(1, Activation = Sigmoid)
 
 
-### 🏆 Achievements
-| Metric | Value |
+### 🏆 Performance
+| Metric | Score |
 |--------|-------|
 | Training Accuracy | ~99.6% |
 | Validation Accuracy | ~99.5% |
 
 ---
 
-## 🏛️ Project Files
-| File | Description |
-|------|-------------|
-| `Exoplanet_Detection_using_Deep_Learning.ipynb` | Model training notebook |
-| `best_model.keras` | Trained model |
-| `exoplanet_app.py` | Streamlit web app |
-| `requirements.txt` | Dependencies for deployment |
-| `sample_lightcurve.csv` | Example input for prediction |
+## 🛠 Tech Stack
+| Component | Technology |
+|----------|-------------|
+| Language | Python |
+| Deep Learning | TensorFlow / Keras |
+| Data Handling | Pandas, NumPy |
+| Visualization | Matplotlib |
+| Deployment | Streamlit Cloud |
 
 ---
 
-## 🚀 Run Locally (Optional)
+## 📁 Repository Structure
+📦 Exoplanet-Detection-using-Deep-Learning
+┣ 📄 Exoplanet_Detection_using_Deep_Learning.ipynb (model training)
+┣ 📄 best_model.keras (trained model)
+┣ 📄 exoplanet_app.py (Streamlit app)
+┣ 📄 sample_lightcurve.csv (example input)
+┣ 📄 requirements.txt (dependencies)
+┗ 📄 README.md
+
+
+---
+
+## ▶️ Run Locally (Optional)
 ```bash
+git clone https://github.com/ayushmandas29/Exoplanet-Detection-using-Deep-Learning.git
+cd Exoplanet-Detection-using-Deep-Learning
 pip install -r requirements.txt
 streamlit run exoplanet_app.py
 
-📌 How to Use the Web App
-1. Export the light-curve flux values as a single-row CSV
-2. Upload to the Streamlit interface
+📥 Input Format for Prediction
+To use the web app:
+1. Upload a .csv file containing one row only
+2. All values should be numeric flux values
+3. No header and no label column
 
-3. The model outputs:
-     ✔ Prediction (Exoplanet / No Exoplanet)
-     ✔ Probability score
-     ✔ Light-curve visualization
+Example:
+0.021, 0.018, 0.012, -0.005, -0.053, -0.049, ...
 
-| Feature                          | Status        |
-| -------------------------------- | ------------- |
-| Grad-CAM explanation heatmaps    | 🚧 (upcoming) |
-| Predict transit depth & duration | 🚧            |
-| Multi-file batch predictions     | 🚧            |
-| FastAPI REST endpoint            | 🚧            |
-
+🔧 Future Enhancements:
+. Explainability via Grad-CAM on 1D signals
+. Support batch upload for multiple stars
+. Regression model for transit depth and duration estimation
+. FastAPI endpoint for production API inference
+. Deploy to mobile edge devices using TFLite
 
 👤 Author
 Ayushman Das
-Machine Learning & AI Enthusiast
-📧 ayushmandas736@gmail.com
-🔗 https://github.com/ayushmandas29
+AI & Machine Learning Enthusiast — Space Science & Research Lover 🚀
+📧 Email: ayushmandas736@gmail.com
+🔗 GitHub: https://github.com/ayushmandas29
 
-⭐ If you like this project, consider giving it a star — it motivates further research and improvements!
+⭐ If this project helped you or inspired you, please consider giving the repository a star — your support motivates further improvements!
